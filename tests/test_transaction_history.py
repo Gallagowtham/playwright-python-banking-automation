@@ -1,6 +1,7 @@
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.transaction_page import TransactionPage
+from utils.test_data import TestData
 
 
 def test_transaction(page):
@@ -18,7 +19,11 @@ def test_transaction(page):
     # Transaction
     transaction = TransactionPage(page)
     transaction.click_checkout()
-    transaction.fill_details("Gowtham", "QA", "517001")
+    transaction.fill_details(
+        TestData.FIRST_NAME,
+        TestData.LAST_NAME,
+        TestData.ZIP_CODE
+    )
     transaction.finish_transaction()
 
     # Validation
